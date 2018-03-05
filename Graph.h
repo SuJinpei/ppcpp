@@ -39,6 +39,27 @@ private:
     FL_Color c;
 };
 
+struct Line_style {
+    enum Line_stype_type {
+        solid = FL_SOLID,
+        dash = FL_DASH,
+        dot = FL_DOT,
+        dashdot = FL_DASHDOT,
+        dashdotdot = FL_DASHDOTDOT
+    };
+
+    Line_style(Line_style_type ss):s{ss}, w{0} {}
+    Line_style(Line_stype_type lst, int ww):s{lst}, w{ww} {}
+    Line_style(int ss) : s{ss}, w{0} {}
+
+    int width() const { return w; }
+    int style() const { return s; }
+
+private:
+    int s;
+    int w;
+};
+
 struct Shape {
     void add(Point p);
 };
